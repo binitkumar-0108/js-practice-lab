@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 2</title>
+</head>
+<body>
+    <!-- //change backgroundcolour of paragraph -->
+    <!-- //change textcolour of paragraph -->
+    
+    <p id="text" >This is paragraph</p>
+    <button onclick="changeColor(`red`)" ondblclick="changeText(`red`)">Red</button>
+    <button onclick="changeColor('blue')" ondblclick="changeText(`blue`)">blue</button>
+    <button onclick="changeColor('yellow')" ondblclick="changeText(`yellow`)">yellow</button>
+    <button onclick="changeColor('green')" ondblclick="changeText(`green`)">green</button>
+    <script>
+        
+        let changeColor = (color)=>{
+           let para = document.querySelector("#text");
+           para.style.backgroundColor = color;
+        }
+
+        let changeText = (i) =>{
+            document.querySelector("#text").style.color = i;
+
+        }
+    </script>
+</body>
+</html>

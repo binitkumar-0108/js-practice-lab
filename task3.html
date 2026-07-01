@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>task3</title>
+</head>
+<body >
+    <!-- change the size of text by button -->
+    <h1 id="text">This is Text</h1>
+    <button id="big-btn">BIG</button>
+    <button id="small-btn">Small</button>
+    <button id="reset-btn">Reset</button>
+
+    <script>
+
+        let textSize = document.querySelector("#text");
+        const originalSize =getComputedStyle(textSize).fontSize;
+        
+        let getSize =() =>{
+           return parseInt(getComputedStyle(textSize).fontSize)
+        }
+
+
+        let resetbtn = document.querySelector("#reset-btn")
+        resetbtn.addEventListener("click",()=>{
+           
+            textSize.style.fontSize =originalSize;
+        });
+
+
+        let bigbtn = document.getElementById("big-btn");   
+        bigbtn.addEventListener("click", ()=>{
+            let size =getSize() + 2;
+            textSize.style.fontSize =size+"px";
+        });
+
+
+        let smallbtn = document.querySelector("#small-btn") ;
+        smallbtn.addEventListener("click",()=>{
+            let small =getSize()-2;
+            textSize.style.fontSize = small + "px";
+        });
+        
+
+
+        
+
+
+    </script>
+</body>
+</html>
