@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task5</title>
+    <style>
+        .dark{
+            background-color: black;
+            color : white;
+        }
+        
+
+    </style>
+</head>
+<body >
+        <!-- Task 5 - Dark Mode Toggle -->
+
+    <h1>DOM Manipulation</h1>
+    <p>This is line of paragraph</p>
+
+    <button id="theme-btn">DARK MODE</button>
+
+    <script>
+       const body = document.body;
+       document.querySelector("#theme-btn")
+       .addEventListener("click",()=>{
+        body.classList.toggle("dark")
+        document.getElementById("theme-btn").innerText=
+        body.classList.contains("dark") ?"LIGHT MODE" : "DARK MODE";
+       })
+
+
+    </script>
+</body>
+</html>
