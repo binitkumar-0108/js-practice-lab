@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 7</title>
+</head>
+<body  style="text-align: center  ; padding: 200px">
+    <!-- Password Strength Checker -->
+    <h2>Password Strength Checker</h2>
+
+    <input
+    type="password"
+    id="password"
+    placeholder="Enter password"
+    >
+
+    <h3 id="strength">Strength: </h3>
+    
+    
+        <p id="lenStatus" >☐ Minimum 8 characters</p>
+        <p id="numStatus">☐ Contains Number</p>
+        <p id="upperStatus">☐ Contains UpperCase</p>
+        <p id="lowerStatus">☐ Contains LowerCase</p>
+    
+    
+
+    <script>
+        const password = document.querySelector("#password");
+        const strength = document.querySelector("#strength");
+        
+        const lenStatus = document.querySelector("#lenStatus");
+        const numStatus = document.querySelector("#numStatus");
+        const upperStatus = document.querySelector("#upperStatus");
+        const lowerStatus = document.querySelector("#lowerStatus");       
+        
+        password.addEventListener("input",()=>{
+
+            const value = password.value;
+            const hasLength = value.length >=8 ;
+            const hasUpper= /[A-Z]/.test(value);
+            const hasLower = /[a-z]/.test(value);
+            const hasNumber = /[0-9]/.test(value);
+
+             lenStatus.innerText =
+                hasLength
+                ? "✅ Minimum 8 characters"
+                : "❌ Minimum 8 characters";
+
+            numStatus.innerText =
+                hasNumber
+                ? "✅ Contains Number"
+                : "❌ Contains Number";
+
+            upperStatus.innerText =
+                hasUpper
+                ? "✅ Contains Uppercase"
+                : "❌ Contains Uppercase";
+
+            lowerStatus.innerText =
+                hasLower
+                ? "✅ Contains Lowercase"
+                : "❌ Contains Lowercase";
+
+
+         
+
+           if (value.length === 0) {
+
+                strength.innerText = "Strength:";
+                strength.style.color = "gray";
+
+            }
+
+            else if (hasLength && hasUpper && hasLower && hasNumber) {
+
+                strength.innerText = "Strength: Strong";
+                strength.style.color = "green";
+
+            }
+
+            else if (hasLength && (hasUpper || hasLower) && hasNumber) {
+
+                strength.innerText = "Strength: Medium";
+                strength.style.color = "orange";
+
+            }
+
+            else {
+
+                strength.innerText = "Strength: Weak";
+                strength.style.color = "red";
+
+            }
+            
+        });
+
+    </script>
+</body>
+</html>
