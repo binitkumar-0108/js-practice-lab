@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 6</title>
+</head>
+<body style="text-align: center  ; padding: 200px">
+
+     <!-- add live character counter using input event -->
+    <input
+    id="text-box"
+    type="text"
+    placeholder="Type here...">
+
+    <p id="count">Characters : 0</p>
+
+    <script>
+
+        const input =document.querySelector("#text-box")
+
+        input.addEventListener("input",()=>{
+            let count=input.value.length;
+          document.getElementById("count").innerText=`Characters : ${count}`;
+
+        })
+
+    </script>
+</body>
+</html>
