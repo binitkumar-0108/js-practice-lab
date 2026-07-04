@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 8</title>
+</head>
+<body>
+    <h2>Shopping Cart</h2>
+
+<button id="apple" >Add Apple</button>
+<button id="banana">Add Banana</button>
+<button id="orange">Add Orange</button>
+<button id="mango">Add Mango</button>
+
+<button id="clear">Clear Cart</button>
+
+<hr>
+
+<p id="apple-count">Apple : 0</p>
+<p id="banana-count">Banana : 0</p>
+<p id="orange-count">Orange : 0</p>
+<p id="mango-count">Mango : 0</p>
+
+<h3 id="total" >Total Items : 0</h3>
+
+<script>
+    
+    let cart ={
+        apple:0,
+        banana:0,
+        orange:0,
+        mango:0
+    }
+
+    const apple=document.querySelector("#apple");
+
+    apple.addEventListener("click",()=>{
+        cart.apple++;
+        updatecart();
+       
+    })
+    const banana=document.querySelector("#banana");
+    banana.addEventListener("click",()=>{
+        cart.banana++;
+        updatecart();
+    })
+    const orange=document.querySelector("#orange");
+    orange.addEventListener("click",()=>{
+        cart.orange++;
+        updatecart();
+    })
+    const mango=document.querySelector("#mango");
+    mango.addEventListener("click",()=>{
+        cart.mango++;
+        updatecart();
+    })
+    
+    const clear=document.querySelector("#clear");
+    clear.addEventListener("click",()=>{
+        cart ={
+            apple:0,
+            banana:0,
+            orange:0,
+            mango:0
+        }
+        updatecart();
+    })
+         
+    function updatecart (){
+        let appleCount= document.querySelector("#apple-count");
+        let bananaCount=document.querySelector("#banana-count");
+        let orangeCount=document.querySelector("#orange-count");
+        let mangoCount=document.querySelector("#mango-count");
+        
+        appleCount.innerText =`Apple : ${cart.apple}`  
+        bananaCount.innerText =`Banana : ${cart.banana}`
+        orangeCount.innerText =`Orange : ${cart.orange}`
+        mangoCount.innerText =`Mango : ${cart.mango}`
+         
+        if(cart.apple>5){
+           appleCount.style.color="red";
+        }
+        else{
+            appleCount.style.color="black";
+        }
+
+        if(cart.banana>5){
+            bananaCount.style.color="red";
+        }
+        else{
+            bananaCount.style.color="black";
+        }
+        if(cart.mango>5){
+          mangoCount.style.color="red";
+        }
+        else{
+            mangoCount.style.color="black";
+        }
+        if(cart.orange>5){
+            orangeCount.style.color="red";
+        }
+        else{
+           orangeCount.style.color="black";
+        }
+        let totalItems=cart.apple+cart.banana+cart.mango+cart.orange ;
+        document.querySelector("#total").innerText=`Total Items :${totalItems}`
+
+
+    }
+
+
+    
+  
+</script>
+</body>
+</html>
