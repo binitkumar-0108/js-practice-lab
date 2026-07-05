@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 9</title>
+
+    <style>
+       body{
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: gray;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap:20px;
+        padding: 50px;  
+       
+        }
+    .container{
+    width: 500px;
+    height: 400px;
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+    .button{
+         padding: 7px 8px;
+        color: black;
+    }
+    .rmvbtn{
+        padding: 7px 8px;
+        background-color: rgb(241, 54, 54);
+        color: white;
+        
+    }
+    .rmvbtn:active{
+    transform: scale(0.9);
+}
+   #notes{
+    margin-top: 15px;
+    max-height: 350px;   /* Maximum height */
+    overflow-y: auto;    /* Scroll */
+}
+    .box{
+    display: flex;
+    background-color:floralwhite;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid white;
+    border-radius: 8px;
+    }
+    #noteInput{
+        width: 300px;
+        padding: 10px;
+        font-size: 16px;
+        border-radius: 8px;
+        border: 2px solid gray;
+       }
+    </style>
+</head>
+<body >
+    <h2>Notes App</h2>
+    <div class="container">
+
+        
+        <input
+        type="text"
+        id="noteInput"
+        placeholder="Write a note">
+        
+        <button id="addBtn">
+            Add Note
+        </button>
+        
+        
+        
+        <div id="notes"></div>
+    </div>
+
+<script>
+    const addBtn = document.querySelector("#addBtn")
+    const notes = document.querySelector("#notes")
+    const inputVal = document.querySelector("#noteInput")
+
+    addBtn.classList.add("button")
+    
+    addBtn.addEventListener("click",()=>{ 
+
+        const box =document.createElement("div")
+        box.classList.add("box");
+        
+        
+        const p= document.createElement("p")
+        const removeBtn =document.createElement("button")
+        
+        p.innerText= inputVal.value.trim();
+        if(inputVal.value.trim() ===""){
+            return alert("Can't be empty")
+        }
+        removeBtn.innerText="DELETE";
+        removeBtn.addEventListener("click",()=>{
+            box.remove();
+        })
+        notes.appendChild(box);
+        box.appendChild(p);
+        box.appendChild(removeBtn)
+        
+        inputVal.value=""; 
+        
+        removeBtn.classList.add("rmvbtn")
+      
+    })
+        
+    
+</script>
+</body>
+</html>
