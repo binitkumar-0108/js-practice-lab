@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <!-- Favorite Movies Tracking -->
+    <h2>Favorite Movies</h2>
+    <input id="movieInput" type="text" placeholder="type here">
+<button id="addBtn">Add Movie</button>
+
+<div id="movies"></div>
+
+<script>
+    const input = document.querySelector("#movieInput")
+    let movies =JSON.parse(localStorage.getItem("movies")) || [];
+    const moviesDiv = document.querySelector("#movies");
+    const addBtn = document.getElementById("addBtn");
+    renderMovies();
+    addBtn.addEventListener("click",()=>{
+        if(input.value.trim() == ""){
+            return alert("cannot be empty")
+        }
+        movies.push(input.value.trim()); 
+        localStorage.setItem("movies",JSON.stringify(movies));
+        console.log(movies)
+        input.value="";
+        renderMovies();
+    })
+       
+function renderMovies(){
+    moviesDiv.innerHTML = "";
+    for(let i=0;i<movies.length;i++){
+        const box = document.createElement("div");
+        const p =document.createElement("p");
+        p.innerText=movies[i];
+        box.appendChild(p);
+        const rmvBtn = document.createElement("button");
+        rmvBtn.innerText="Delete";
+        box.appendChild(rmvBtn);
+        moviesDiv.appendChild(box)
+        rmvBtn.addEventListener("click",()=>{
+            movies.splice(i,1);
+            renderMovies();
+            localStorage.setItem("movies",JSON.stringify(movies));
+        })
+    }
+  
+    
+
+     }
+</script>
+</body>
+</html>
